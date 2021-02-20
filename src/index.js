@@ -1,9 +1,8 @@
 require('dotenv').config()
 const express = require('express');
 const bodyParser = require('body-parser');
-const { album } = require('./app/routes');
+const { albums } = require('./app/routes');
 
-// create express app
 const app = express();
 app.disable("x-powered-by");
 
@@ -14,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // API's
-app.use('/api/album', album);
+app.use('/api/albums', albums);
 
 // listen for requests
 app.listen(process.env.PORT, () => {
