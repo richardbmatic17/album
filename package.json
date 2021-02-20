@@ -1,0 +1,24 @@
+{
+  "name": "parking-lot",
+  "version": "1.0.0",
+  "description": "This is a test project",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./src/index.js",
+    "start-debug": "node ./src/index.js >> app.logs"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "joi": "^17.4.0",
+    "moment": "^2.29.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
