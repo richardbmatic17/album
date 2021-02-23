@@ -1,5 +1,4 @@
-const { albums } = require('../../models');
-const { validateAlbum } = require('../../lib/validators');
+const { images } = require('../../models');
 const {
   resError,
   resSuccess,
@@ -7,19 +6,7 @@ const {
 } = require('../../lib');
 
 module.exports = async (req, res) => {
-  const { id } = req.params
+  const albumList = await repo.find(images, req.query);
 
-  const { error } = validateAlbum.get({id});
-
-  if(error) {
-    return resError(res, error.details[0].message);
-  }
-
-  const albumDetails = await repo.findOne(albums, id);
-
-  if (!albumDetails) {
-    return resError(res, 'Album not found');
-  }
-
-  return res.json(resSuccess('Fetched album', albumDetails));
+  return res.json(resSuccess('Album list', albumList));
 }
