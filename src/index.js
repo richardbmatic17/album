@@ -1,7 +1,10 @@
 require('dotenv').config()
 const express = require('express');
 const bodyParser = require('body-parser');
-const { albums } = require('./app/routes');
+const {
+  albums,
+  images
+} = require('./app/routes');
 
 const app = express();
 app.disable("x-powered-by");
@@ -14,6 +17,7 @@ app.use(bodyParser.json());
 
 // API's
 app.use('/api/albums', albums);
+app.use('/api/images', images);
 
 // listen for requests
 app.listen(process.env.PORT, () => {

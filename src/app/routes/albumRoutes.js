@@ -7,7 +7,7 @@ const {
   createAlbum,
   updateAlbum,
   deleteAlbum,
-} = require('../controllers/vehicleControllers');
+} = require('../controllers/albumControllers');
 
 router.use(middleware.routerLogger);
 

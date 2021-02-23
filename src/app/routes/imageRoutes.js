@@ -2,19 +2,11 @@ const express = require('express')
 const router = express.Router()
 const { middleware } = require('../lib');
 const {
-  getAlbums,
-} = require('../controllers/vehicleControllers');
+  getImages,
+} = require('../controllers/imageControllers');
 
 router.use(middleware.routerLogger);
 
-router.get('/:id', getAlbum)
-
-router.get('/', getAlbums)
-
-router.post('/', createAlbum)
-
-router.put('/:id', updateAlbum)
-
-router.delete('/:id', deleteAlbum)
+router.get('/', getImages);
 
 module.exports = router;
