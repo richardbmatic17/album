@@ -39,6 +39,8 @@ const update = data => {
     id: Joi.number().required(),
     title: Joi.string().required(),
     description: Joi.string().required(),
+    is_deleted: Joi.boolean(),
+    is_hidden: Joi.boolean(),
   });
 
   const result = schema.validate(data);

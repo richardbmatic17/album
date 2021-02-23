@@ -1,5 +1,5 @@
-const { albums } = require('../../models');
-const { validateAlbum } = require('../../lib/validators');
+const { images } = require('../../models');
+const { validateImage } = require('../../lib/validators');
 const {
   resError,
   resSuccess,
@@ -10,13 +10,13 @@ const {
 module.exports = async (req, res) => {
   const { id } = req.params
 
-  const { error } = validateAlbum.destroy({id});
+  const { error } = validateImage.destroy({id});
   
   if(error) {
     return resError(res, error.details[0].message);
   }
 
-  const destroyedAlbum = await repo.destroy(albums, id);
+  const destroyedAlbum = await repo.destroy(images, id);
 
   if(!destroyedAlbum) {
     return resError(res, 'Album deletion failed!!!');

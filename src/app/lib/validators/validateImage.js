@@ -33,22 +33,23 @@ const destroy = data => {
   return result;
 }
 
-// const update = data => {
-//   const schema = Joi.object({
-//     id: Joi.number().required(),
-//     title: Joi.string().required(),
-//     description: Joi.string().required(),
-//   });
+const update = data => {
+  const schema = Joi.object({
+    id: Joi.number().required(),
+    name: Joi.string().required(),
+    is_deleted: Joi.boolean(),
+    is_hidden: Joi.boolean(),
+  });
 
-//   const result = schema.validate(data);
-//   console.log({data, result})
+  const result = schema.validate(data);
+  console.log({data, result})
 
-//   return result;
-// }
+  return result;
+}
 
 module.exports = {
   create,
   get,
   destroy,
-  // update,
+  update,
 }
