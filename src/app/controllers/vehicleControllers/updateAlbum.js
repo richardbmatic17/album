@@ -1,4 +1,4 @@
-const { album } = require('../../models');
+const { albums } = require('../../models');
 const { validateAlbum } = require('../../lib/validators');
 const {
   resError,
@@ -16,13 +16,13 @@ module.exports = async (req, res) => {
     return resError(res, error.details[0].message);
   }
 
-  const updateAlbum = await repo.update(album, params, id);
+  const updateAlbum = await repo.update(albums, params, id);
 
   if(JSON.stringify(updateAlbum) === '[0]') {
     return resError(res, 'Updating album failed!!!');
   }
 
-  const albumDetails = await repo.findOne(album, id);
+  const albumDetails = await repo.findOne(albums, id);
 
   if (!albumDetails) {
     return resError(res, 'Album not found');

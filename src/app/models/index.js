@@ -18,6 +18,6 @@ if (config.use_env_variable) {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-db.album = require('./album')(sequelize, Sequelize);
+db.albums = require('./albums')(sequelize, Sequelize);
 
 module.exports = db;
