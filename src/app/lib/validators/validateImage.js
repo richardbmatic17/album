@@ -1,16 +1,15 @@
 const Joi = require('joi');
 
-// const create = data => {
-//   const schema = Joi.object({
-//     title: Joi.string().required(),
-//     description: Joi.string().required(),
-//   });
+const create = data => {
+  const schema = Joi.object({
+    name: Joi.string().required(),
+  });
 
-//   const result = schema.validate(data);
-//   console.log({data, result})
+  const result = schema.validate(data);
+  console.log({data, result})
 
-//   return result;
-// }
+  return result;
+}
 
 const get = data => {
   const schema = Joi.object({
@@ -48,7 +47,7 @@ const destroy = data => {
 // }
 
 module.exports = {
-  // create,
+  create,
   get,
   destroy,
   // update,
