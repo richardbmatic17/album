@@ -19,5 +19,6 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 db.albums = require('./albums')(sequelize, Sequelize);
+db.images = require('./images')(sequelize, Sequelize);
 
 module.exports = db;
