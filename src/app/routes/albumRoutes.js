@@ -11,14 +11,14 @@ const {
 
 router.use(middleware.routerLogger);
 
-router.get('/:id', getAlbum)
+router.get('/:id', getAlbum);
 
-router.get('/', getAlbums)
+router.get('/', getAlbums);
 
-router.post('/', createAlbum)
+router.post('/', createAlbum);
 
-router.put('/:id', updateAlbum)
+router.put('/:id', updateAlbum);
 
-router.delete('/:id', deleteAlbum)
+router.delete('/:id', deleteAlbum);
 
 module.exports = router;
