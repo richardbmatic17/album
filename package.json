@@ -16,9 +16,11 @@
     "joi": "^17.4.0",
     "moment": "^2.29.1",
     "mysql2": "^2.2.5",
-    "sequelize": "^6.5.0"
+    "sequelize": "^6.5.0",
+    "serverless-http": "^2.7.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "serverless-offline": "^3.31.3"
   }
 }
