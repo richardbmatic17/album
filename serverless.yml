@@ -18,14 +18,19 @@ custom:
   stage: ${opt:stage, self:provider.stage}
 
 functions:
-  albums:
+  apis:
     handler: src/index.handler
     events:
-      - http:
-          path: 'api/albums'
-          method: ANY
-          cors: true
-      - http:
-          path: 'api/albums/{albumId}'
-          method: ANY
-          cors: true
+      - http: ANY /
+      - http: 'ANY {proxy+}'
+  # images:
+  #   handler: src/index.handler
+  #   events:
+  #     - http:
+  #         path: 'api/images'
+  #         method: ANY
+  #         cors: true
+  #     - http:
+  #         path: 'api/images/{albumId}'
+  #         method: ANY
+  #         cors: true
