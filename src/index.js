@@ -1,4 +1,5 @@
 require('dotenv').config()
+const serverless = require('serverless-http');
 const express = require('express');
 const bodyParser = require('body-parser');
 const {
@@ -23,3 +24,5 @@ app.use('/api/images', images);
 app.listen(process.env.PORT, () => {
     console.log("Server is listening on port ", process.env.PORT);
 });
+
+module.exports.handler = serverless(app);

@@ -1,0 +1,31 @@
+frameworkVersion: '>=1.2.0 <2.0.0'
+
+service: backend-api-album
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  region: ap-southeast-1
+  memorySize: 1024
+  versionFunctions: false
+  timeout: 30
+  environment: ${self:custom.stage}
+
+plugins:
+  - serverless-offline
+
+custom:
+  stage: ${opt:stage, self:provider.stage}
+
+functions:
+  albums:
+    handler: src/index.handler
+    events:
+      - http:
+          path: 'api/albums'
+          method: ANY
+          cors: true
+      - http:
+          path: 'api/albums/{albumId}'
+          method: ANY
+          cors: true
