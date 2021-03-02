@@ -12,6 +12,8 @@ module.exports = async (req, res) => {
     return resError(res, error.details[0].message);
   }
 
+  // verify if body.album is existing in album table
+
   const upload = await repo.fileToS3(req.body, req.files);
 
   // if(!upload) {
