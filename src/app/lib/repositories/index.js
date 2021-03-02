@@ -1,3 +1,4 @@
+const awsServices = require('./awsServices');
 const searchBuilder = require('./searchBuilder');
 const { getPagination, getTotalPages } = require('./pagination');
 
@@ -27,4 +28,5 @@ module.exports = {
   find,
   findOne,
   update,
+  ...awsServices,
 }

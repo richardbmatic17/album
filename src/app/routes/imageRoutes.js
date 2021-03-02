@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { middleware } = require('../lib');
+const { logger } = require('../lib/middleware');
 const {
   createImage,
   getImage,
@@ -9,7 +9,7 @@ const {
   deleteImage,
 } = require('../controllers/imageControllers');
 
-router.use(middleware.routerLogger);
+router.use(logger.routerLogger);
 
 
 router.get('/:id', getImage);

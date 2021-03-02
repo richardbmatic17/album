@@ -4,7 +4,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const {
   albums,
-  images
+  images,
+  upload,
 } = require('./app/routes');
 
 const app = express();
@@ -19,6 +20,7 @@ app.use(bodyParser.json());
 // API's
 app.use('/api/albums', albums);
 app.use('/api/images', images);
+app.use('/api/upload', upload);
 
 // listen for requests
 app.listen(process.env.PORT, () => {
