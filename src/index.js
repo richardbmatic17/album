@@ -6,6 +6,7 @@ const {
   albums,
   images,
   upload,
+  auth,
 } = require('./app/routes');
 
 const app = express();
@@ -18,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // API's
+app.use('/api', auth);
 app.use('/api/albums', albums);
 app.use('/api/images', images);
 app.use('/api/upload', upload);

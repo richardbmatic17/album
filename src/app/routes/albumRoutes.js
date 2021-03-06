@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { logger, upload } = require('../lib/middleware');
+const { logger, verifyToken } = require('../lib/middleware');
 const {
   getAlbums,
   getAlbum,
@@ -10,6 +10,7 @@ const {
 } = require('../controllers/albumControllers');
 
 router.use(logger.routerLogger);
+router.use(verifyToken);
 
 router.get('/:id', getAlbum);
 
