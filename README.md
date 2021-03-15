@@ -17,6 +17,8 @@ DELETE: 204 No Content
 2. validation: https://joi.dev/api/?v=17.4.0
 
 
+# AWS Resources:
+1. https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html
 
 
 # Other usefull links:
