@@ -16,6 +16,10 @@ module.exports = async (req, res) => {
 
   const  auth = await mongodb.models.Auth.findOne(req.body);
  
+  if (!auth) {
+    return resError(res, 'Invalid email or password!');
+  } 
+ 
   const token = jwt.sign({...auth._doc}, process.env.TOKEN_SECRET, {expiresIn: 30});
 
   return res.status(201).json(resSuccess('You are successfully logged in.', token));
