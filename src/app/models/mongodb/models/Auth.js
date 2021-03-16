@@ -2,18 +2,21 @@
 module.exports = mongoose => {
   const newSchema = new mongoose.Schema({
     name: {
-      type: String
+      type: String,
+      required: 'Name field is required!'
     },
     email: {
-      type: String
+      type: String,
+      required: 'Email field is required!'
     },
     password: {
-      type: String
+      type: String,
+      required: 'Password field is required!'
     }
   }, {
     timestamps: {
-      createdAt: 'created_at',
-      updatedAt: 'updated_at'
+      createdAt: 'createdAt',
+      updatedAt: 'updatedAt'
     }
   });
   const Auth = mongoose.model('Auth', newSchema);
