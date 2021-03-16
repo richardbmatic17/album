@@ -1,4 +1,4 @@
-const { albums } = require('../../models');
+const { albums } = require('../../models/mysql');
 const {
   resError,
   resSuccess,

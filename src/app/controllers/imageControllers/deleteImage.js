@@ -1,4 +1,4 @@
-const { images } = require('../../models');
+const { images } = require('../../models/mysql');
 const { validateImage } = require('../../lib/validators');
 const {
   resError,
