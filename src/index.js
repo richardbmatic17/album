@@ -13,10 +13,10 @@ const app = express();
 app.disable("x-powered-by");
 
 // parse requests of content-type - application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded());
 
 // parse requests of content-type - application/json
-app.use(bodyParser.json());
+app.use(express.json());
 
 // API's
 app.use('/api', auth);
