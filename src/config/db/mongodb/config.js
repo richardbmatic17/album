@@ -1,12 +1,12 @@
 require('dotenv').config();
 
 module.exports = {
-  "development": {
-    "database": {
-      "url": "mongodb://localhost/album",
-      "options": {
-        "useNewUrlParser": true,
-        "useUnifiedTopology": true
+  development: {
+    database: {
+      url: "mongodb://localhost/album",
+      options: {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
       }
     }
   },
