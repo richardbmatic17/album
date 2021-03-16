@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const { validateAuth } = require('../../lib/validators');
+const mongodb = require('../../models/mongodb/models');
 const {
   resError,
   resSuccess,
@@ -13,8 +14,9 @@ module.exports = async (req, res) => {
     return resError(res, error.details[0].message);
   }
 
-  const user = { id : 3 };
-  const token = jwt.sign(user, process.env.TOKEN_SECRET, {expiresIn: 30});
+  const  auth = await mongodb.models.Auth.findOne(req.body);
+ 
+  const token = jwt.sign({...auth._doc}, process.env.TOKEN_SECRET, {expiresIn: 30});
 
   return res.status(201).json(resSuccess('You are successfully logged in.', token));
 }

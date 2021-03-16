@@ -2,7 +2,8 @@ const Joi = require('joi');
 
 const login = data => {
   const schema = Joi.object({
-    username: Joi.string().required(),
+    // username: Joi.string().required(),
+    email: Joi.string().required(),
     password: Joi.string().required(),
   });
 

@@ -6,7 +6,11 @@ const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../../../../config/db/mongodb/config.js')[env];
 
 if (config.database.url) {
-  Mongoose.connect(config.database.url, config.database.options);
+  Mongoose.connect(config.database.url, config.database.options, err => {
+    if (err) throw err
+
+    console.log('mongodb is running...')
+  });
 } else if (config.database.config.dbName) {
   Mongoose.connect(`${config.database.protocol}://${config.database.username}:${config.database.password}@${config.database.host}:${config.database.port}`, config.database.options);
 } else {
