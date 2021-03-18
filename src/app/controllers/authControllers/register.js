@@ -8,24 +8,17 @@ const {
 } = require('../../lib');
 
 module.exports = async (req, res) => {
-  // const { error } = validateAuth.login(req.body);
+  const { error } = validateAuth.register(req.body);
 
-  // if(error) {
-  //   return resError(res, error.details[0].message);
-  // }
-
-  // const user = { id : 3 };
-  // const token = jwt.sign(user, process.env.TOKEN_SECRET, {expiresIn: 30});
+  if(error) {
+    return resError(res, error.details[0].message);
+  }
 
   let auth = {};
   try {
-    auth = await mongodb.models.Auth.create({
-      name: 'Richard Matic',
-      email: 'rmatic@stratpoint.com',
-      password: '1234'
-    })
-  } catch (error) {
-    return resError(res, error);
+    auth = await mongodb.models.Auth.create(req.body)
+  } catch (err) {
+    return resError(res, err);
   }
 
   return res.status(201).json(resSuccess('Your account successfuly registered!!!', auth));
