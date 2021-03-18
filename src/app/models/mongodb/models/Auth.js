@@ -7,7 +7,10 @@ module.exports = mongoose => {
     },
     email: {
       type: String,
-      required: 'Email field is required!'
+      required: 'Email field is required!',
+      unique: true,
+      dropDups: true,
+      index: { unique: true }
     },
     password: {
       type: String,
