@@ -13,6 +13,20 @@ const login = data => {
   return result;
 }
 
+const register = data => {
+  const schema = Joi.object({
+    email: Joi.string().required().email(),
+    password: Joi.string().required(),
+    name: Joi.string().required(),
+  });
+
+  const result = schema.validate(data);
+  console.log({data, result})
+
+  return result;
+}
+
 module.exports = {
   login,
+  register,
 }
