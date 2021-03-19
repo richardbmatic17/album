@@ -8,6 +8,8 @@ const destroy = async (model, id) => await model.destroy({ where: { id }});
 
 const findOne = async (model, id) => await model.findOne({ where: { id }});
 
+const findByFilter = async (model, filter) => await model.findOne(filter);
+
 const update = async (model, params, id) => await model.update(params, { where: { id }});
 
 const find = async (model, query) => {
@@ -28,5 +30,6 @@ module.exports = {
   find,
   findOne,
   update,
+  findByFilter,
   ...awsServices,
 }
