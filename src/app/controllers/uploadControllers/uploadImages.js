@@ -1,4 +1,5 @@
 const { validateUpload } = require('../../lib/validators');
+const { albums } = require('../../models/mysql');
 const {
   resError,
   resSuccess,
@@ -12,13 +13,18 @@ module.exports = async (req, res) => {
     return resError(res, error.details[0].message);
   }
 
-  // verify if body.album is existing in album table
+  const filter = { where: { title: req.body.album }};
+  const albumDetails = await repo.findByFilter(albums, filter);
+
+  if (!albumDetails) {
+    return resError(res, 'Album not found');
+  }
 
   const upload = await repo.fileToS3(req.body, req.files);
 
-  // if(!upload) {
-  //   return resError(res, 'Failed inserting image/s');
-  // }
+  if(!upload) {
+    return resError(res, 'Failed inserting image/s');
+  }
 
   return res.status(201).json(resSuccess('Successfully inserted image/s', req.files));
 }
