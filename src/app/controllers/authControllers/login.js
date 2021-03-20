@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
     return resError(res, error.details[0].message);
   }
 
-  const  auth = await mongodb.models.Auth.findOne(req.body);
+  const  auth = await mongodb.models.auths.findOne(req.body);
  
   if (!auth) {
     return resError(res, 'Invalid email or password!');
