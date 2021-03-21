@@ -20,7 +20,7 @@ module.exports = async (req, res) => {
     return resError(res, 'Invalid email or password!');
   } 
  
-  const token = jwt.sign({...auth._doc}, process.env.TOKEN_SECRET, {expiresIn: 30});
+  const token = jwt.sign({...auth._doc}, process.env.TOKEN_SECRET, {expiresIn: 30000});
 
   return res.status(201).json(resSuccess('You are successfully logged in.', token));
 }
