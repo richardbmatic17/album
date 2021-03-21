@@ -5,6 +5,7 @@ const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../../../../config/db/mongodb/config.js')[env];
 
+Mongoose.set('debug', true);
 if (config.database.url) {
   Mongoose.connect(config.database.url, config.database.options, err => {
     if (err) throw err
