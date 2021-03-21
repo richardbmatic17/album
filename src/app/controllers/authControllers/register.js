@@ -16,7 +16,7 @@ module.exports = async (req, res) => {
 
   let auth = {};
   try {
-    auth = await mongodb.models.auths.create(req.body)
+    auth = await mongodb.models.auths.create(req.body);
   } catch (err) {
     return resError(res, err);
   }
