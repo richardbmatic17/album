@@ -14,7 +14,7 @@ const create = data => {
 
 const get = data => {
   const schema = Joi.object({
-    id: Joi.number().required(),
+    id: Joi.string().required(),
   });
 
   const result = schema.validate(data);

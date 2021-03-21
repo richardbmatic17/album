@@ -1,4 +1,4 @@
-const { albums } = require('../../models/mysql');
+const mongodb = require('../../models/mongodb/models');
 const {
   resError,
   resSuccess,
@@ -6,7 +6,7 @@ const {
 } = require('../../lib');
 
 module.exports = async (req, res) => {
-  const albumList = await repo.find(albums, req.query);
+  const albumList = await repo.find(mongodb.models.albums, req.query);
 
   return res.json(resSuccess('Album list', albumList));
 }

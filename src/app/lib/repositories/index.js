@@ -1,12 +1,22 @@
 const awsServices = require('./awsServices');
 const searchBuilder = require('./searchBuilder');
 const { getPagination, getTotalPages } = require('./pagination');
+const { logError } = require('../logger');
 
-const create = async (model, data) => await model.create(data);
+const create = async (model, data) => {
+  try {
+    return await model.create(data)
+  } catch (error) {
+    logError(error);
+    return error
+  }
+};
 
 const destroy = async (model, id) => await model.destroy({ where: { id }});
 
-const findOne = async (model, id) => await model.findOne({ where: { id }});
+const findOne = async (model, _id) => await model.findOne({ where: { _id }});
+
+const findById = async (model, _id) => await model.findById(_id);
 
 const findByFilter = async (model, filter) => await model.findOne(filter);
 
@@ -31,5 +41,6 @@ module.exports = {
   findOne,
   update,
   findByFilter,
+  findById,
   ...awsServices,
 }

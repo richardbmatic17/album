@@ -1,4 +1,4 @@
-const { albums } = require('../../models/mysql');
+const mongodb = require('../../models/mongodb/models');
 const { validateAlbum } = require('../../lib/validators');
 const {
   resError,
@@ -15,7 +15,7 @@ module.exports = async (req, res) => {
     return resError(res, error.details[0].message);
   }
 
-  const albumDetails = await repo.findOne(albums, id);
+  const albumDetails = await repo.findById(mongodb.models.albums, id);
 
   if (!albumDetails) {
     return resError(res, 'Album not found');

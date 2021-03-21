@@ -1,4 +1,4 @@
-const { albums } = require('../../models/mysql');
+const mongodb = require('../../models/mongodb/models');
 const { validateAlbum } = require('../../lib/validators');
 const {
   resError,
@@ -14,9 +14,9 @@ module.exports = async (req, res) => {
     return resError(res, error.details[0].message);
   }
 
-  const createdAlbum = await repo.create(albums, req.body);
+  const createdAlbum = await repo.create(mongodb.models.albums, req.body);
 
-  if(!createdAlbum) {
+  if(createdAlbum.code === 11000) {
     return resError(res, 'Failed creating album');
   }
 
